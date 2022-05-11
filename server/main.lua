@@ -12,7 +12,9 @@ CreateThread(function()
 	function VersionCheck(err, response, headers)
 		Citizen.Wait(3000)
 		if err == 200 then
+
 			local Data = json.decode(response)
+			if Data.enabled then
 			if CurrentVersion ~= Data.version then
                 print("^1[KILLANA]: ^3Warning! There is a new Version of the donor weapon shop out yet!")
 			else	
@@ -24,7 +26,7 @@ CreateThread(function()
 		
 		SetTimeout(60000000, HTTPRequest)
 	end
-
+end
 	HTTPRequest()
     logo()
 end)
